@@ -1,0 +1,94 @@
+from kivy.lang import Builder
+from kivy.uix.scrollview import ScrollView
+from kivy.core.window import Window
+from kivymd.app import MDApp
+from kivymd.effects.fadingedge.fadingedge import FadingEdgeEffect
+from kivymd.uix.list import OneLineListItem
+
+Window.size = (400, 600)
+KV = '''
+MDScreen:
+
+    MDBottomNavigation:
+        panel_color:"#0a0a0a"
+        MDBottomNavigationItem:
+            name:'screen 1'
+            text:"lessons"
+            icon:"book-search"
+            md_bg_color: "#f5f6f7"
+            radius: [10, 15, 0, 0]
+
+            FadeScrollView:
+                fade_height: self.height / 53
+
+
+                MDList:
+                    id: container
+
+'''
+
+
+class FadeScrollView(FadingEdgeEffect, ScrollView):
+    pass
+
+
+class Test(MDApp):
+    def build(self):
+        return Builder.load_string(KV)
+
+    # la liste des cours physique et chemique
+    def on_start(self):
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Consommation de la matière organique(Partie 1)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Consommation de la matière organique(Partie 2)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Consommation de la matière organique(Partie 3)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Rôle du muscle strié squelettique dans la conversion")
+        )
+
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Rôle du muscle strié squelettique(Partie 2)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Nature de l’information génétique (Partie 1)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Nature de l’information génétique (Partie 2)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Nature de l’information génétique (Partie 3)")
+        )
+
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Nature de l’information génétique (Partie 4)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Expression de l’information génétique (Partie 1)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Expression de l’information génétique (Partie 2)")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Consommation de la matière organique et flux d’énergie")
+        )
+
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Nature et mécanisme de l’expression du matériel génétique")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Utilisation des matières organiques et inorganiques")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Les phénomènes géologiques accompagnant la formation des chaînes de montagnes et leur relation avec la tectonique des plaques")
+        )
+        self.root.ids.container.add_widget(
+            OneLineListItem(text=f"Transformations liées à des réactions acide-base")
+        )
+
+
+Test().run()
